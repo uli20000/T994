@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f4f0e8">
-<title>KFC｜T994 管理後台</title>
+<title>KFC｜新北-T994 巡檢後台</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -765,6 +765,19 @@ button{cursor:pointer}
 .title{font-size:30px;line-height:1.2}
 @media(max-width:700px){.title{font-size:26px}}
 
+
+
+/* 三行標題：城市-Rider Center／KFC／日期 */
+.header-row,
+.title-row{
+  flex-direction:column;
+  gap:4px;
+}
+.title{font-size:30px;line-height:1.2}
+.kfc{font-size:26px}
+.date{margin-top:4px;font-size:14px}
+@media(max-width:700px){.title{font-size:26px}}
+
 </style>
 </head>
 
@@ -776,7 +789,7 @@ button{cursor:pointer}
   <div class="eyebrow">KFC DELIVERY CENTER</div>
 
   <div class="title-row">
-    <h1 id="adminTitle" class="title">新北-Rider Center(後台)</h1>
+    <h1 id="adminTitle" class="title">新北-Rider Center</h1>
     <div class="kfc">KFC</div>
   </div>
 
@@ -3036,19 +3049,9 @@ function showAdminMode(mode){
   vehicleModePage.style.display = mode === "vehicle" ? "block" : "none";
   surveyModePage.style.display = mode === "survey" ? "block" : "none";
   batteryModePage.style.display = mode === "battery" ? "block" : "none";
-  if(mode === "home") adminTitle.textContent = "新北-Rider Center(車輛巡檢後台)";
-  if(mode === "vehicle") {
-    adminTitle.textContent = "新北-Rider Center(車輛檢查)";
-    loadData();
-  }
-  if(mode === "survey") {
-    adminTitle.textContent = "新北-Rider Center(意向調查)";
-    loadSurveyData();
-  }
-  if(mode === "battery") {
-    adminTitle.textContent = "新北-Rider Center(電池設備查看)";
-    loadBatteryData();
-  }
+  if(mode === "vehicle") loadData();
+  if(mode === "survey") loadSurveyData();
+  if(mode === "battery") loadBatteryData();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
