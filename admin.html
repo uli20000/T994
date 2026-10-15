@@ -4557,11 +4557,13 @@ function showAdminMode(mode){
   batteryModePage.style.display = mode === "battery" ? "block" : "none";
   defensiveModePage.style.display = mode === "defensive" ? "block" : "none";
   rosterModePage.style.display = mode === "roster" ? "block" : "none";
+  document.getElementById("shiftModePage").style.display = mode === "shift" ? "block" : "none";
   if(mode === "vehicle") loadData();
   if(mode === "survey") loadSurveyData();
   if(mode === "battery") loadDeviceData(true);
   if(mode === "defensive") loadDefensiveAdminData();
   if(mode === "roster") loadRosterData();
+  if(mode === "shift") t995LoadShiftAdmin();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
@@ -5374,7 +5376,6 @@ t995EmployeeDirectoryList.onclick=e=>{
   const del=e.target.closest("[data-t995-employee-delete]");if(del)t995DeleteEmployeePermanently(del.dataset.t995EmployeeDelete,del);
 };
 t995EmployeeAreaTabs.onclick=e=>{const b=e.target.closest("[data-t995-area-filter]");if(!b)return;t995EmployeeAreaFilter=b.dataset.t995AreaFilter;t995RenderEmployeeDirectory();};
-t995ShiftModeBtn.onclick=()=>showAdminMode("shift");
 t995ShiftBackBtn.onclick=()=>showAdminMode("home");
 t995ShiftWeekSelect.onchange=()=>t995LoadShiftAdmin();
 t995ShiftWeekButtons.onclick=e=>{const b=e.target.closest("[data-t995-shift-week]");if(!b)return;t995ShiftWeekSelect.value=b.dataset.t995ShiftWeek;t995LoadShiftAdmin();};
